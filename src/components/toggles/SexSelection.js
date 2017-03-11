@@ -1,19 +1,25 @@
 import React from 'react';
 
 export const SexSelection = (props) => (
-  <div>
-    <label>Sex:</label>
-    <input type="radio"
-      name="sex"
-      id="male"
-      onChange={props.handleSexChange}
-      value="male" />
-    <label htmlFor="male">Male</label>
-    <input type="radio"
-      name="sex"
-      id="female"
-      onChange={props.handleSexChange}
-      value="female" />
-    <label htmlFor="female">Female</label>
+  <div className="form-group">
+    <label className="col-sm-2 control-label">
+      Sex
+    </label>
+    <div className="col-sm-10">
+      <label className="radio-inline">
+        <input type="radio"
+          name="sex"
+          id="female"
+          onChange={props.handleSexChange}
+          value="female" /> Female
+      </label>
+      <label className="radio-inline">
+        <input type="radio"
+          name="sex"
+          id="male"
+          onChange={props.handleSexChange}
+          value="male" /> Male
+      </label>
+    </div>
   </div>
 )
