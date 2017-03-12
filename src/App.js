@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import TdeeForm from './components/TdeeForm';
 
@@ -12,7 +11,7 @@ class App extends Component {
             <TdeeForm />
           </div>
           <div className="col-sm-6">
-            
+
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {UnitSelection, SexSelection} from './toggles';
-import Weight from './input-fields/Weight';
+import SingleInput from './input-fields/SingleInput';
 
 class TdeeForm extends Component {
   constructor() {
@@ -39,7 +39,13 @@ class TdeeForm extends Component {
       <form className="form-horizontal">
         <UnitSelection handleUnitChange={this.handleUnitChange} />
         <SexSelection handleSexChange={this.handleSexChange} />
-        <Weight units={this.state.units} />
+        <SingleInput
+          label={'Weight'}
+          inputType={'number'}
+          units={this.state.units}
+          content={this.state.weight}
+          width={'80px'}
+          controlFunc={this.handleWeightChange}/>
       </form>
     );
   }
