@@ -19,16 +19,16 @@ function HeightInput(props) {
         <div className="col-sm-10">
           <input type="number"
             className="form-control"
-            value={props.content.height}
-            onChange={props.controlFunc}
+            value={props.content.feet}
+            onChange={props.controlFuncFeet}
             style={{width: '60px', display: 'inline-block'}} />
-          {props.units === 'imperial' && <span> ft</span>}
+          {props.units === 'imperial' && <span> ft </span>}
           <input type="number"
             className="form-control"
-            value={props.content.height}
-            onChange={props.controlFunc}
+            value={props.content.inches}
+            onChange={props.controlFuncInches}
             style={{width: '60px', display: 'inline-block'}} />
-          {props.units === 'imperial' && <span> inches</span>}
+          {props.units === 'imperial' && <span> in</span>}
           </div>
       }
     </div>
