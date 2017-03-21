@@ -9,7 +9,8 @@ class TdeeForm extends Component {
     this.state = {
       units: "",
       sex: "",
-      weight: "",
+      displayWeight: "",
+      masterWeight: "",
       age: "",
       feet: "",
       inches: "",
@@ -27,13 +28,28 @@ class TdeeForm extends Component {
     // this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleUnitChange (event) {
+    // kg to lb
+    if (this.state.units === 'metric' && this.state.displayWeight) {
+      const lbConversion = parseFloat(this.state.displayWeight) * 2.20462;
+      this.setState({displayWeight: Math.round(lbConversion * 10) / 10});
+    // lb to kg
+    } else if (this.state.units === 'imperial' && this.state.displayWeight) {
+      const kgConversion = parseFloat(this.state.displayWeight) * 0.453592;
+      this.setState({displayWeight: Math.round(kgConversion * 10) / 10});
+    }
     this.setState({units: event.target.value})
   }
   handleSexChange (event) {
     this.setState({sex: event.target.value})
   }
   handleWeightChange (event) {
-    this.setState({weight: event.target.value})
+    this.setState({displayWeight: event.target.value}, () => {
+      if (this.state.units === 'imperial') {
+        this.setState({masterWeight: this.lbToKg(this.state.displayWeight)})
+      } else {
+        this.setState({masterWeight: this.state.displayWeight})
+      }
+    })
   }
   handleAgeChange (event) {
     this.setState({age: event.target.value})
@@ -51,15 +67,19 @@ class TdeeForm extends Component {
       this.setState({masterHeight: this.imperialToCm()})
     });
   }
+  lbToKg (lbStr) {
+    const lbConversion = parseFloat(lbStr) * 0.453592;
+    return Math.round(lbConversion * 10) / 10;
+  }
   imperialToCm () {
-    const cmFromInches = parseInt(this.state.inches, 10) * 2.54;
-    const cmFromFeet = parseInt(this.state.feet, 10) * 30.48;
+    const cmFromInches = parseFloat(this.state.inches) * 2.54;
+    const cmFromFeet = parseFloat(this.state.feet) * 30.48;
     if (cmFromInches && cmFromFeet) {
       return cmFromFeet + cmFromInches;
     } else if (cmFromInches) {
-      return cmFromInches
+      return cmFromInches;
     } else {
-      return cmFromFeet
+      return cmFromFeet;
     }
   }
   handleActivityLevelChange (event) {
@@ -74,7 +94,7 @@ class TdeeForm extends Component {
           label={'Weight'}
           inputType={'number'}
           units={this.state.units}
-          content={this.state.weight}
+          content={this.state.displayWeight}
           width={'80px'}
           controlFunc={this.handleWeightChange}/>
         <SingleInput
@@ -84,7 +104,7 @@ class TdeeForm extends Component {
           width={'80px'}
           controlFunc={this.handleAgeChange}/>
         <HeightInput
-          content={this.state.feet}
+          content={this.state.masterHeight}
           units={this.state.units}
           controlFuncFeet={this.handleFeetChange}
           controlFuncInches={this.handleInchesChange}
