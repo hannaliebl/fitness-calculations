@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {UnitSelection, SexSelection} from './toggles';
 import SingleInput from './input-fields/SingleInput';
 import HeightInput from './input-fields/HeightInput';
+import UnitConversion from '../utilities/UnitConversion';
 
 class TdeeForm extends Component {
   constructor() {
@@ -45,7 +46,7 @@ class TdeeForm extends Component {
   handleWeightChange (event) {
     this.setState({displayWeight: event.target.value}, () => {
       if (this.state.units === 'imperial') {
-        this.setState({masterWeight: this.lbToKg(this.state.displayWeight)})
+        this.setState({masterWeight: UnitConversion.lbToKg(this.state.displayWeight)})
       } else {
         this.setState({masterWeight: this.state.displayWeight})
       }
@@ -59,28 +60,13 @@ class TdeeForm extends Component {
   }
   handleFeetChange (event) {
     this.setState({feet: event.target.value}, function afterFeetChange () {
-      this.setState({masterHeight: this.imperialToCm()})
+      this.setState({masterHeight: UnitConversion.imperialToCm(this.state.inches, this.state.feet)})
     });
   }
   handleInchesChange (event) {
     this.setState({inches: event.target.value}, function afterInchesChange () {
-      this.setState({masterHeight: this.imperialToCm()})
+      this.setState({masterHeight: UnitConversion.imperialToCm(this.state.inches, this.state.feet)})
     });
-  }
-  lbToKg (lbStr) {
-    const lbConversion = parseFloat(lbStr) * 0.453592;
-    return Math.round(lbConversion * 10) / 10;
-  }
-  imperialToCm () {
-    const cmFromInches = parseFloat(this.state.inches) * 2.54;
-    const cmFromFeet = parseFloat(this.state.feet) * 30.48;
-    if (cmFromInches && cmFromFeet) {
-      return cmFromFeet + cmFromInches;
-    } else if (cmFromInches) {
-      return cmFromInches;
-    } else {
-      return cmFromFeet;
-    }
   }
   handleActivityLevelChange (event) {
     this.setState({activityLevel: event.target.value})
