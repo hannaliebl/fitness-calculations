@@ -9,7 +9,7 @@ function HeightInput(props) {
       <div className="col-sm-10">
         <input type="number"
           className="form-control"
-          value={props.content.height}
+          value={props.content.masterHeight}
           onChange={props.controlFunc}
           style={{width: '80px', display: 'inline-block'}} />
           {props.units === 'metric' && <span> cm</span>}

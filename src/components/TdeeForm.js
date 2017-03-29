@@ -3,9 +3,10 @@ import {UnitSelection, SexSelection} from './toggles';
 import SingleInput from './input-fields/SingleInput';
 import HeightInput from './input-fields/HeightInput';
 import UnitConversion from '../utilities/UnitConversion';
+import DisplayOutput from './display-output/DisplayOutput'
 
 class TdeeForm extends Component {
-  constructor() {
+  constructor(props) {
     super()
     this.state = {
       units: "",
@@ -16,19 +17,11 @@ class TdeeForm extends Component {
       feet: "",
       inches: "",
       activityLevel: "",
-      masterHeight: ""
+      masterHeight: "",
+      tdee: ""
     }
-    this.handleUnitChange = this.handleUnitChange.bind(this)
-    this.handleSexChange = this.handleSexChange.bind(this)
-    this.handleWeightChange = this.handleWeightChange.bind(this)
-    this.handleAgeChange = this.handleAgeChange.bind(this)
-    this.handleActivityLevelChange = this.handleActivityLevelChange.bind(this)
-    this.handleCmChange = this.handleCmChange.bind(this)
-    this.handleFeetChange = this.handleFeetChange.bind(this)
-    this.handleInchesChange = this.handleInchesChange.bind(this)
-    // this.handleSubmit = this.handleSubmit.bind(this)
   }
-  handleUnitChange (event) {
+  handleUnitChange = (event) => {
     // kg to lb
     if (this.state.units === 'metric' && this.state.displayWeight) {
       const lbConversion = parseFloat(this.state.displayWeight) * 2.20462;
@@ -40,10 +33,10 @@ class TdeeForm extends Component {
     }
     this.setState({units: event.target.value})
   }
-  handleSexChange (event) {
+  handleSexChange = (event) => {
     this.setState({sex: event.target.value})
   }
-  handleWeightChange (event) {
+  handleWeightChange = (event) => {
     this.setState({displayWeight: event.target.value}, () => {
       if (this.state.units === 'imperial') {
         this.setState({masterWeight: UnitConversion.lbToKg(this.state.displayWeight)})
@@ -52,28 +45,32 @@ class TdeeForm extends Component {
       }
     })
   }
-  handleAgeChange (event) {
+  handleAgeChange = (event) => {
     this.setState({age: event.target.value})
   }
-  handleCmChange (event) {
+  handleCmChange = (event) => {
     this.setState({masterHeight: event.target.value})
   }
-  handleFeetChange (event) {
+  handleFeetChange = (event) => {
     this.setState({feet: event.target.value}, function afterFeetChange () {
       this.setState({masterHeight: UnitConversion.imperialToCm(this.state.inches, this.state.feet)})
     });
   }
-  handleInchesChange (event) {
+  handleInchesChange = (event) => {
     this.setState({inches: event.target.value}, function afterInchesChange () {
       this.setState({masterHeight: UnitConversion.imperialToCm(this.state.inches, this.state.feet)})
     });
   }
-  handleActivityLevelChange (event) {
+  handleActivityLevelChange = (event) => {
     this.setState({activityLevel: event.target.value})
+  }
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.setState({tdee: "2000"})
   }
   render() {
     return (
-      <form className="form-horizontal">
+      <form className="form-horizontal" onSubmit={this.handleSubmit}>
         <UnitSelection handleUnitChange={this.handleUnitChange} />
         <SexSelection handleSexChange={this.handleSexChange} />
         <SingleInput
@@ -95,6 +92,10 @@ class TdeeForm extends Component {
           controlFuncFeet={this.handleFeetChange}
           controlFuncInches={this.handleInchesChange}
           controlFunc={this.handleCmChange}/>
+        <div className="pull-right">
+          <span>Clear Form</span> <button type="submit" className="btn btn-default">Submit</button>
+        </div>
+        <DisplayOutput tdee={this.state.tdee}/>
       </form>
     );
   }
