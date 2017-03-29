@@ -4,7 +4,8 @@ import {UnitSelection, SexSelection} from './components/toggles';
 import SingleInput from './components/input-fields/SingleInput';
 import HeightInput from './components/input-fields/HeightInput';
 import UnitConversion from './utilities/UnitConversion';
-import DisplayOutput from './components/display-output/DisplayOutput'
+import DisplayOutput from './components/display-output/DisplayOutput';
+import CalorieCalc from './utilities/CalorieCalc';
 
 class App extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class App extends Component {
       inches: "",
       activityLevel: "",
       masterHeight: "",
+      bmr: "",
       tdee: ""
     }
   }
@@ -67,7 +69,7 @@ class App extends Component {
   }
   handleSubmit = (event) => {
     event.preventDefault()
-    this.setState({tdee: "2000"})
+    this.setState({bmr: CalorieCalc.MifflinStJeor(this.state.sex, this.state.masterWeight, this.state.masterHeight, this.state.age)})
   }
   render() {
     return (
@@ -102,7 +104,7 @@ class App extends Component {
             </form>
           </div>
           <div className="col-sm-6">
-            <DisplayOutput tdee={this.state.tdee}/>
+            <DisplayOutput bmr={this.state.bmr}/>
           </div>
         </div>
       </div>

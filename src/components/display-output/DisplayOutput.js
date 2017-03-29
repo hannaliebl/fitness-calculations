@@ -3,7 +3,7 @@ import React from 'react';
 function DisplayOutput(props) {
   return (
     <div>
-      TDEE: {props.tdee}
+      Basal Metabolic Rate: {props.bmr}
     </div>
   )
 }
