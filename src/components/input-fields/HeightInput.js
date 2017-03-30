@@ -4,7 +4,6 @@ function HeightInput(props) {
   return (
     <div className="form-group">
       <label className="col-sm-2 control-label">Height</label>
-
       {(props.units === 'metric' || props.units === '') &&
       <div className="col-sm-10">
         <input type="number"

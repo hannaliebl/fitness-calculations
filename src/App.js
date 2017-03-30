@@ -3,6 +3,7 @@ import './App.css';
 import {UnitSelection, SexSelection} from './components/toggles';
 import SingleInput from './components/input-fields/SingleInput';
 import HeightInput from './components/input-fields/HeightInput';
+import ActivitySelect from './components/input-fields/ActivitySelect';
 import UnitConversion from './utilities/UnitConversion';
 import DisplayOutput from './components/display-output/DisplayOutput';
 import CalorieCalc from './utilities/CalorieCalc';
@@ -69,7 +70,8 @@ class App extends Component {
   }
   handleSubmit = (event) => {
     event.preventDefault()
-    this.setState({bmr: CalorieCalc.MifflinStJeor(this.state.sex, this.state.masterWeight, this.state.masterHeight, this.state.age)})
+    const bmr = CalorieCalc.MifflinStJeor(this.state.sex, this.state.masterWeight, this.state.masterHeight, this.state.age, this.state.activityLevel)
+    this.setState({bmr: bmr, tdee: Math.round(bmr * this.state.activityLevel)})
   }
   render() {
     return (
@@ -98,13 +100,14 @@ class App extends Component {
                 controlFuncFeet={this.handleFeetChange}
                 controlFuncInches={this.handleInchesChange}
                 controlFunc={this.handleCmChange}/>
+              <ActivitySelect handleActivityLevelChange={this.handleActivityLevelChange} />
               <div className="pull-right">
                 <span>Clear Form</span> <button type="submit" className="btn btn-default">Submit</button>
               </div>
             </form>
           </div>
           <div className="col-sm-6">
-            <DisplayOutput bmr={this.state.bmr}/>
+            <DisplayOutput bmr={this.state.bmr} tdee={this.state.tdee}/>
           </div>
         </div>
       </div>
