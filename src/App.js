@@ -73,6 +73,12 @@ class App extends Component {
     const bmr = CalorieCalc.MifflinStJeor(this.state.sex, this.state.masterWeight, this.state.masterHeight, this.state.age, this.state.activityLevel)
     this.setState({bmr: bmr, tdee: Math.round(bmr * this.state.activityLevel)})
   }
+  canBeSubmitted = () => {
+    const { units, sex, masterWeight, age, activityLevel, masterHeight} = this.state
+      return (
+        units !== '' && sex !== '' && parseFloat(masterWeight) > 0 && parseFloat(age) > 0 && activityLevel !== '' && parseFloat(masterHeight) > 0
+      )
+  }
   render() {
     return (
       <div className="container">
@@ -102,7 +108,7 @@ class App extends Component {
                 controlFunc={this.handleCmChange}/>
               <ActivitySelect handleActivityLevelChange={this.handleActivityLevelChange} />
               <div className="pull-right">
-                <span>Clear Form</span> <button type="submit" className="btn btn-default">Submit</button>
+                <button type="submit" disabled={!this.canBeSubmitted()} className="btn btn-default">Submit</button>
               </div>
             </form>
           </div>
