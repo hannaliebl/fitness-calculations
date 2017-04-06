@@ -7,6 +7,7 @@ import ActivitySelect from './components/input-fields/ActivitySelect';
 import UnitConversion from './utilities/UnitConversion';
 import DisplayOutput from './components/display-output/DisplayOutput';
 import CalorieCalc from './utilities/CalorieCalc';
+import FormValidation from './utilities/FormValidation'
 
 class App extends Component {
   constructor(props) {
@@ -22,7 +23,15 @@ class App extends Component {
       activityLevel: "",
       masterHeight: "",
       bmr: "",
-      tdee: ""
+      tdee: "",
+      errors: {
+        units: false,
+        sex: false,
+        weight: false,
+        age: false,
+        height: false,
+        activityLevel: false
+      }
     }
   }
   handleUnitChange = (event) => {
@@ -79,6 +88,13 @@ class App extends Component {
         units !== '' && sex !== '' && parseFloat(masterWeight) > 0 && parseFloat(age) > 0 && activityLevel !== '' && parseFloat(masterHeight) > 0
       )
   }
+  handleErrors = (action, event) => {
+    const hasError = FormValidation(action, event.target.value)
+    this.setState({
+      errors: { ...this.state.errors, [action]: hasError }
+    })
+  }
+
   render() {
     return (
       <div className="container">
@@ -90,16 +106,23 @@ class App extends Component {
               <SingleInput
                 label={'Weight'}
                 inputType={'number'}
+                keyName={'weight'}
+                errors={this.state.errors.weight}
                 units={this.state.units}
                 content={this.state.displayWeight}
                 width={'80px'}
-                controlFunc={this.handleWeightChange}/>
+                controlFunc={this.handleWeightChange}
+                handleErrors={this.handleErrors}/>
               <SingleInput
                 label={'Age'}
                 inputType={'number'}
+                keyName={'age'}
+                errors={this.state.errors.age}
+                units={this.state.units}
                 content={this.state.age}
                 width={'80px'}
-                controlFunc={this.handleAgeChange}/>
+                controlFunc={this.handleAgeChange}
+                handleErrors={this.handleErrors}/>
               <HeightInput
                 content={this.state.masterHeight}
                 units={this.state.units}
