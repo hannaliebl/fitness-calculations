@@ -9,7 +9,7 @@ function HeightInput(props) {
         <input type="number"
           name={props.name}
           className="form-control"
-          value={props.value.masterHeight}
+          value={props.cm}
           onChange={props.handleCmChange}
           onBlur={props.handleErrors}
           style={{width: '80px', display: 'inline-block'}} />
@@ -22,7 +22,7 @@ function HeightInput(props) {
           <input type="number"
             name={props.name}
             className="form-control"
-            value={props.value.feet}
+            value={props.feet}
             onChange={props.handleFeetChange}
             onBlur={props.handleImperialHeightErrors}
             style={{width: '60px', display: 'inline-block'}} />
@@ -30,7 +30,7 @@ function HeightInput(props) {
           <input type="number"
             name={props.name}
             className="form-control"
-            value={props.value.inches}
+            value={props.inches}
             onChange={props.handleInchesChange}
             onBlur={props.handleImperialHeightErrors}
             style={{width: '60px', display: 'inline-block'}} />

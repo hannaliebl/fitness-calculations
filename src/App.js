@@ -37,6 +37,14 @@ class App extends Component {
     }
   }
   handleUnitChange = (event) => {
+    // cm to feet and inches
+    if (this.state.units === 'metric' && this.state.masterHeight) {
+      const totalInches = parseFloat(this.state.masterHeight) * 0.393701
+      const feet = Math.floor(totalInches/12)
+      const inches = Math.round(((totalInches % 12) * 10) / 10)
+      this.setState({inches: inches})
+      this.setState({feet: feet})
+    }
     // kg to lb
     if (this.state.units === 'metric' && this.state.displayWeight) {
       const lbConversion = parseFloat(this.state.displayWeight) * 2.20462;
@@ -151,7 +159,9 @@ class App extends Component {
               </SingleInput>
               <HeightInput
                 name='height'
-                value={this.state.masterHeight}
+                cm={this.state.masterHeight}
+                feet={this.state.feet}
+                inches={this.state.inches}
                 hasErrors={this.state.errors.height}
                 units={this.state.units}
                 handleErrors={this.handleErrors}
