@@ -20,6 +20,13 @@ export const SexSelection = (props) => (
           onChange={props.handleSexChange}
           value="male" /> Male
       </label>
+      <label className="radio-inline">
+        <input type="radio"
+          name="sex"
+          id="male"
+          onChange={props.handleSexChange}
+          value="neither" /> Don't care–average the results
+      </label>
     </div>
   </div>
 )
