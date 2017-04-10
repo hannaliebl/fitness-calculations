@@ -83,6 +83,9 @@ class App extends Component {
     });
   }
   handleActivityLevelChange = (event) => {
+    if (this.state.errors[event.target.name] === true) {
+      this.handleErrors(event)
+    }
     this.setState({activityLevel: event.target.value})
   }
   handleSubmit = (event) => {
@@ -97,12 +100,22 @@ class App extends Component {
       )
   }
   handleErrors = (event) => {
-    const hasError = FormValidation(event.target.name, event.target.value)
+    const hasError = FormValidation(event.target.name, event.target.value) || (event.target.value === '')
     this.setState({
       errors: { ...this.state.errors, [event.target.name]: hasError }
     })
   }
-
+  handleImperialHeightErrors = (event) => {
+    if (this.state.masterHeight > 0) {
+      this.setState({
+        errors: {...this.state.errors, 'height': false}
+      })
+    } else {
+      this.setState({
+        errors: {...this.state.errors, 'height': true}
+      })
+    }
+  }
   render() {
     return (
       <div className="container-960">
@@ -137,12 +150,26 @@ class App extends Component {
                   errorMsg='Age must be greater than 0' />
               </SingleInput>
               <HeightInput
-                content={this.state.masterHeight}
+                name='height'
+                value={this.state.masterHeight}
+                hasErrors={this.state.errors.height}
                 units={this.state.units}
-                controlFuncFeet={this.handleFeetChange}
-                controlFuncInches={this.handleInchesChange}
-                controlFunc={this.handleCmChange}/>
-              <ActivitySelect handleActivityLevelChange={this.handleActivityLevelChange} />
+                handleErrors={this.handleErrors}
+                handleImperialHeightErrors={this.handleImperialHeightErrors}
+                handleFeetChange={this.handleFeetChange}
+                handleInchesChange={this.handleInchesChange}
+                handleCmChange={this.handleCmChange}>
+                <FieldError hasErrors={this.state.errors.height}
+                  errorMsg='Height must be greater than 0' />
+              </HeightInput>
+              <ActivitySelect
+                name='activityLevel'
+                handleErrors={this.handleErrors}
+                handleActivityLevelChange={this.handleActivityLevelChange}
+                hasErrors={this.state.errors.activityLevel}>
+                <FieldError hasErrors={this.state.errors.activityLevel}
+                  errorMsg='Please select an activity level' />
+              </ActivitySelect>
               <div className="pull-right">
                 <button type="submit" disabled={!this.canBeSubmitted()} className="btn btn-default">Submit</button>
               </div>

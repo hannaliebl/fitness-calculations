@@ -2,32 +2,40 @@ import React from 'react';
 
 function HeightInput(props) {
   return (
-    <div className="form-group">
+    <div className={`form-group ${props.hasErrors ? 'has-error' : ''}`}>
       <label className="col-sm-2 control-label">Height</label>
       {(props.units === 'metric' || props.units === '') &&
       <div className="col-sm-10">
         <input type="number"
+          name={props.name}
           className="form-control"
-          value={props.content.masterHeight}
-          onChange={props.controlFunc}
+          value={props.value.masterHeight}
+          onChange={props.handleCmChange}
+          onBlur={props.handleErrors}
           style={{width: '80px', display: 'inline-block'}} />
           {props.units === 'metric' && <span> cm</span>}
+          {props.children}
         </div>
       }
       {props.units === 'imperial' &&
         <div className="col-sm-10">
           <input type="number"
+            name={props.name}
             className="form-control"
-            value={props.content.feet}
-            onChange={props.controlFuncFeet}
+            value={props.value.feet}
+            onChange={props.handleFeetChange}
+            onBlur={props.handleImperialHeightErrors}
             style={{width: '60px', display: 'inline-block'}} />
-          {props.units === 'imperial' && <span> ft </span>}
+          <span> ft </span>
           <input type="number"
+            name={props.name}
             className="form-control"
-            value={props.content.inches}
-            onChange={props.controlFuncInches}
+            value={props.value.inches}
+            onChange={props.handleInchesChange}
+            onBlur={props.handleImperialHeightErrors}
             style={{width: '60px', display: 'inline-block'}} />
-          {props.units === 'imperial' && <span> in</span>}
+          <span> in</span>
+          {props.children}
           </div>
       }
     </div>
