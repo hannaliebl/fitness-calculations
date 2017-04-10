@@ -1,19 +1,18 @@
 import React from 'react';
-import partial from '../../utilities/partial'
-
 
 const SingleInput = (props) => {
-  const handleErrors = partial(props.handleErrors, props.keyName)
   return (
-    <div className={`form-group ${props.errors ? 'has-error' : ''}`}>
+    <div className={`form-group ${props.hasErrors ? 'has-error' : ''}`}>
       <label className="col-sm-2 control-label">{props.label}</label>
       <div className="col-sm-10">
         <input type={props.inputType}
           className="form-control"
-          value={props.content}
-          onChange={props.controlFunc}
-          onBlur={handleErrors}
-          style={{width: props.width, display: 'inline-block'}}/> <span>{props.units === 'imperial' && 'lb'}{props.units === 'metric' && 'kg'}</span>
+          name={props.name}
+          value={props.value}
+          onChange={props.handleChange}
+          onBlur={props.handleErrors}
+          style={{width: props.width, display: 'inline-block'}}/>
+          {props.children}
       </div>
     </div>
   )

@@ -13,6 +13,7 @@ function ActivitySelect(props) {
           <option value="1.75">Heavy exercise, 6-7 days per week</option>
           <option value="1.9">Very heavy exercise, twice a day every day</option>
       </select>
+      <span className="help-block">Tip: Most people tend to overestimate their activity level.</span>
       </div>
     </div>
   )

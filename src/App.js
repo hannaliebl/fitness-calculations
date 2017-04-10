@@ -3,6 +3,8 @@ import './App.css';
 import {UnitSelection, SexSelection} from './components/toggles';
 import SingleInput from './components/input-fields/SingleInput';
 import HeightInput from './components/input-fields/HeightInput';
+import UnitLabel from './components/input-fields/UnitLabel';
+import FieldError from './components/input-fields/FieldError';
 import ActivitySelect from './components/input-fields/ActivitySelect';
 import UnitConversion from './utilities/UnitConversion';
 import DisplayOutput from './components/display-output/DisplayOutput';
@@ -50,6 +52,9 @@ class App extends Component {
     this.setState({sex: event.target.value})
   }
   handleWeightChange = (event) => {
+    if (this.state.errors[event.target.name] === true) {
+      this.handleErrors(event)
+    }
     this.setState({displayWeight: event.target.value}, () => {
       if (this.state.units === 'imperial') {
         this.setState({masterWeight: UnitConversion.lbToKg(this.state.displayWeight)})
@@ -59,6 +64,9 @@ class App extends Component {
     })
   }
   handleAgeChange = (event) => {
+    if (this.state.errors[event.target.name] === true) {
+      this.handleErrors(event)
+    }
     this.setState({age: event.target.value})
   }
   handleCmChange = (event) => {
@@ -88,41 +96,46 @@ class App extends Component {
         units !== '' && sex !== '' && parseFloat(masterWeight) > 0 && parseFloat(age) > 0 && activityLevel !== '' && parseFloat(masterHeight) > 0
       )
   }
-  handleErrors = (action, event) => {
-    const hasError = FormValidation(action, event.target.value)
+  handleErrors = (event) => {
+    const hasError = FormValidation(event.target.name, event.target.value)
     this.setState({
-      errors: { ...this.state.errors, [action]: hasError }
+      errors: { ...this.state.errors, [event.target.name]: hasError }
     })
   }
 
   render() {
     return (
-      <div className="container">
+      <div className="container-960">
         <div className="row">
           <div className="col-sm-6">
             <form className="form-horizontal" onSubmit={this.handleSubmit}>
               <UnitSelection handleUnitChange={this.handleUnitChange} />
               <SexSelection handleSexChange={this.handleSexChange} />
               <SingleInput
-                label={'Weight'}
-                inputType={'number'}
-                keyName={'weight'}
-                errors={this.state.errors.weight}
-                units={this.state.units}
-                content={this.state.displayWeight}
-                width={'80px'}
-                controlFunc={this.handleWeightChange}
-                handleErrors={this.handleErrors}/>
+                label='Weight'
+                inputType='number'
+                name='weight'
+                hasErrors={this.state.errors.weight}
+                value={this.state.displayWeight}
+                width='80px'
+                handleChange={this.handleWeightChange}
+                handleErrors={this.handleErrors}>
+                <UnitLabel units={this.state.units}/>
+                <FieldError hasErrors={this.state.errors.weight}
+                  errorMsg='Weight must be greater than 0' />
+              </SingleInput>
               <SingleInput
-                label={'Age'}
-                inputType={'number'}
-                keyName={'age'}
-                errors={this.state.errors.age}
-                units={this.state.units}
-                content={this.state.age}
-                width={'80px'}
-                controlFunc={this.handleAgeChange}
-                handleErrors={this.handleErrors}/>
+                label='Age'
+                inputType='number'
+                name='age'
+                hasErrors={this.state.errors.age}
+                value={this.state.age}
+                width='80px'
+                handleChange={this.handleAgeChange}
+                handleErrors={this.handleErrors}>
+                <FieldError hasErrors={this.state.errors.age}
+                  errorMsg='Age must be greater than 0' />
+              </SingleInput>
               <HeightInput
                 content={this.state.masterHeight}
                 units={this.state.units}
