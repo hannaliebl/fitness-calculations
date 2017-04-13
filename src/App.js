@@ -129,7 +129,7 @@ class App extends Component {
       <div className="container-960">
         <div className="row">
           <div className="col-sm-6">
-            <form className="form-horizontal" onSubmit={this.handleSubmit}>
+            <form className="form-horizontal clearfix bottom-buffer" onSubmit={this.handleSubmit}>
               <UnitSelection handleUnitChange={this.handleUnitChange} />
               <SexSelection handleSexChange={this.handleSexChange} />
               <SingleInput

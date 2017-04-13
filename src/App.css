@@ -1,3 +1,6 @@
+.bottom-buffer {
+  margin-bottom: 20px;
+}
 .has-error {
   color: #F06543;
 }
