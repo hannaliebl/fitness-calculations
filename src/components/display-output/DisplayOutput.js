@@ -1,10 +1,23 @@
 import React from 'react';
+import './DisplayOutput.css';
 
 function DisplayOutput(props) {
   return (
-    <div>
-      <h2>Basal Metabolic Rate: {props.bmr}</h2>
-      <h2>Total Daily Energy Expenditure: {props.tdee}</h2>
+    <div className="text-center">
+    {props.tdee &&
+      <div className="result-block">
+        <h4>Total Daily Energy Expenditure:</h4>
+        <h1> {props.tdee} {props.bmr && 'calories'}</h1>
+        <p>The calories your body will burn in a day based on your activity level.</p>
+      </div>
+    }
+    {props.bmr &&
+      <div className="result-block mod-bmr">
+        <h4>Basal Metabolic Rate:</h4>
+        <h1>{props.bmr} {props.bmr && 'calories'}</h1>
+        <p>Even without leaving bed, your body will burn this many calories in a day.</p>
+      </div>
+    }
     </div>
   )
 }

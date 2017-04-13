@@ -1,0 +1,10 @@
+.result-block {
+  padding: 20px;
+  background: #89A894;
+  color: #FBFBFB;
+  margin-bottom: 30px;
+}
+
+.result-block.mod-bmr {
+  background: #52414C;
+}

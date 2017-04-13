@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,500" rel="stylesheet">
     <!--
       Notice the use of %PUBLIC_URL% in the tag above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -16,16 +17,20 @@
     <title>React App</title>
   </head>
   <body>
+    <nav class="navbar">
+      <div class="container-960">
+        <div class="navbar-header">
+          Fitness Calculations
+        </div>
+      </div>
+    </nav>
+    <div class="container-960">
+      <h1>TDEE Calculator</h1>
+      <p class="lead">Use our calculator to find out how many calories your body burns every day (your TDEE, or Total Daily Energy Expenditure).
+        It takes your individual body metrics and activity level and uses a <a href="https://www.ncbi.nlm.nih.gov/pubmed/2305711">scientifically
+        accurate</a> formula to get your personalized result.
+      </p>
+    </div>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start`.
-      To create a production bundle, use `npm run build`.
-    -->
   </body>
 </html>
