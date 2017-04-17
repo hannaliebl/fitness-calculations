@@ -243,7 +243,7 @@ th {
   h3 {
     page-break-after: avoid;
   }
-  .navbar {
+  .1 {
     display: none;
   }
   .btn > .caret,
@@ -1672,48 +1672,4 @@ input[type="button"].btn-block {
 }
 .pull-left {
   float: left !important;
-}
-
-/*custom*/
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Rubik', sans-serif;
-  background: #FBFBFB;
-  color: #313638;
-}
-
-.container-960 {
-  max-width: 960px;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.navbar {
-  min-height: 50px;
-  margin-bottom: 20px;
-  background: #313638;
-  color: #FBFBFB;
-}
-
-.navbar-header {
-  font-size: 30px;
-  font-weight: 500;
-  padding-top: 5px;
-}
-
-a {
-  text-decoration: none;
-  color: #5386E4;
-}
-
-a:hover {
-  color: #769CE2;
-  text-decoration: none;
-}
-
-label {
-  font-weight: 700;
 }
