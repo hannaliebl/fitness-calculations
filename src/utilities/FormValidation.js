@@ -3,6 +3,7 @@ const FormValidation = (key, formVal) => {
     case 'weight':
     case 'age':
     case 'height':
+    case 'reps':
       return parseFloat(formVal) <= 0;
     default:
       return false;

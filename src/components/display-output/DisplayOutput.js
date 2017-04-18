@@ -18,6 +18,13 @@ function DisplayOutput(props) {
         <p>Even without leaving bed, your body will burn this many calories in a day.</p>
       </div>
     }
+    {props.max &&
+      <div className="result-block mod-max">
+        <h4>One Rep Max:</h4>
+        <h1>{props.max} {props.units === 'imperial' && 'lb'} {props.units === 'metric' && 'kg'}</h1>
+        <p>Your calculated one-rep max.</p>
+      </div>
+    }
     </div>
   )
 }
