@@ -5,6 +5,16 @@ const FormValidation = (key, formVal) => {
     case 'height':
     case 'reps':
       return parseFloat(formVal) <= 0;
+    case 'calories':
+      return ((parseFloat(formVal) <= 0) || (formVal === ''));
+    case 'carbsPercent':
+    case 'proteinPercent':
+    case 'fatPercent':
+      if (formVal === '') {
+        return false
+      } else {
+        return ((parseFloat(formVal) < 0) || (parseFloat(formVal) > 100))
+      }
     default:
       return false;
   }
