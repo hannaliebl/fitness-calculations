@@ -4,6 +4,7 @@ import Home from './components/Home/Home'
 import Tdee from './components/Tdee/Tdee'
 import OneRepMax from './components/OneRepMax/OneRepMax'
 import Macros from './components/Macros/Macros'
+import Footer from './components/Footer/Footer'
 
 function App(props){
   return(
@@ -25,6 +26,7 @@ function App(props){
         <Route path="/tdee-calculator" component={Tdee}/>
         <Route path="/one-rep-max-calculator" component={OneRepMax}/>
         <Route path="/macros-calculator" component={Macros}/>
+        <Footer />
       </div>
     </BrowserRouter>
   )

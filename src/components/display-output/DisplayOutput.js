@@ -25,6 +25,15 @@ function DisplayOutput(props) {
         <p>Your calculated one-rep max.</p>
       </div>
     }
+    {props.carbsGrams &&
+      <div className="result-block mod-macros">
+        <h4>Macros:</h4>
+        <h1>Carbs: {props.carbsGrams} g</h1>
+        <h1>Protein: {props.proteinGrams} g</h1>
+        <h1>Fat: {props.fatGrams} g</h1>
+        <p>Your calculated macronutrient amounts.</p>
+      </div>
+    }
     </div>
   )
 }

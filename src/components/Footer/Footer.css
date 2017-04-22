@@ -1,0 +1,10 @@
+.footer {
+    background: #313638;
+    color: #FBFBFB;
+    width: 100%;
+    min-height: 50px;
+}
+
+.footer-text {
+  padding: 30px 0;
+}

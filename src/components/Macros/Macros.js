@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import SingleInput from '../input-fields/SingleInput'
 import FieldError from '../input-fields/FieldError'
+import DisplayOutput from '../display-output/DisplayOutput';
 import FormValidation from '../../utilities/FormValidation'
 import PercentsValid from '../../utilities/PercentsValid'
+import CalorieCalc from '../../utilities/CalorieCalc';
 
 class Macros extends Component {
   constructor(props) {
@@ -43,6 +45,12 @@ class Macros extends Component {
   }
   handleSubmit = (event) => {
     event.preventDefault()
+    const result = CalorieCalc.PercentMacrosToGrams(parseFloat(this.state.calories), parseFloat(this.state.carbsPercent), parseFloat(this.state.proteinPercent), parseFloat(this.state.fatPercent))
+    this.setState({
+      carbsGrams: result.carbsGrams,
+      proteinGrams: result.proteinGrams,
+      fatGrams: result.fatGrams
+    })
   }
   canBeSubmitted = () => {
     let toggle = false
@@ -126,6 +134,9 @@ class Macros extends Component {
                 <button type="submit" disabled={!this.canBeSubmitted()} className="btn btn-default">Submit</button>
               </div>
             </form>
+          </div>
+          <div className="col-sm-6">
+            <DisplayOutput carbsGrams={this.state.carbsGrams} proteinGrams={this.state.proteinGrams} fatGrams={this.state.fatGrams}/>
           </div>
         </div>
       </div>
