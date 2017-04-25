@@ -34,6 +34,13 @@ function DisplayOutput(props) {
         <p>Your calculated macronutrient amounts.</p>
       </div>
     }
+    {props.hrMax &&
+      <div className="result-block mod-hr">
+        <h4>Target Heart Rate:</h4>
+        <h1>Max HR: {props.hrMax} bpm</h1>
+        <p>Your calculated max heartrate. See the table below for your target heart rate ranges.</p>
+      </div>
+    }
     </div>
   )
 }

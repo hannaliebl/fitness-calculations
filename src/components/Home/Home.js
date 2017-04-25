@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Home.css';
 import oneRepMaxImg from '../../img/one-rep-max.jpg'
 import oneRepMaxSvg from '../../img/one-rep-max.svg'
@@ -19,7 +20,7 @@ function Home(props) {
       </p>
       <div className="row">
         <div className="col-sm-6">
-          <a href="/tdee-calculator">
+          <Link to="/tdee-calculator">
             <div className="intro-block-img" style={{backgroundImage: `url(${tdeeImg})`}}>
               <div className="intro-block mod-tdee">
                 <h1>TDEE</h1>
@@ -29,10 +30,10 @@ function Home(props) {
                 looking to gain or lose weight.</h2>
               </div>
             </div>
-          </a>
+          </Link>
         </div>
         <div className="col-sm-6">
-          <a href="/one-rep-max-calculator">
+          <Link to="/one-rep-max-calculator">
             <div className="intro-block-img" style={{backgroundImage: `url(${oneRepMaxImg})`}}>
               <div className="intro-block mod-max">
                 <h1>One Rep Max</h1>
@@ -42,10 +43,10 @@ function Home(props) {
                 a specific weightlifting program.</h2>
               </div>
             </div>
-          </a>
+          </Link>
         </div>
         <div className="col-sm-6">
-          <a href="/macros-calculator">
+          <Link to="/macros-calculator">
             <div className="intro-block-img" style={{backgroundImage: `url(${macrosImg})`}}>
               <div className="intro-block mod-macros">
                 <h1>Macros</h1>
@@ -54,10 +55,10 @@ function Home(props) {
                 want and gives you their value in grams.</h2>
               </div>
             </div>
-          </a>
+          </Link>
         </div>
         <div className="col-sm-6">
-          <a href="/program-picker">
+          <Link to="/program-picker">
             <div className="intro-block-img" style={{backgroundImage: `url(${programPickerImg})`}}>
               <div className="intro-block mod-program-picker">
                 <h1>Program Picker</h1>
@@ -66,7 +67,7 @@ function Home(props) {
                 resources on the program that it finds for you.</h2>
               </div>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
     </div>

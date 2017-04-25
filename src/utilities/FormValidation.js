@@ -1,12 +1,13 @@
 const FormValidation = (key, formVal) => {
   switch(key) {
     case 'weight':
-    case 'age':
     case 'height':
     case 'reps':
+    case 'rhr':
       return parseFloat(formVal) <= 0;
     case 'calories':
-      return ((parseFloat(formVal) <= 0) || (formVal === ''));
+    case 'age':
+      return ((parseFloat(formVal) <= 0) || (formVal === ''))
     case 'carbsPercent':
     case 'proteinPercent':
     case 'fatPercent':
