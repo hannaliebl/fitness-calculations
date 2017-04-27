@@ -5,6 +5,7 @@ import Tdee from './components/Tdee/Tdee'
 import OneRepMax from './components/OneRepMax/OneRepMax'
 import Macros from './components/Macros/Macros'
 import TargetHeartRate from './components/TargetHeartRate/TargetHeartRate'
+import ProgramPicker from './components/ProgramPicker/ProgramPicker'
 import Footer from './components/Footer/Footer'
 
 function App(props){
@@ -21,6 +22,7 @@ function App(props){
               <li><Link to="/one-rep-max-calculator">One Rep Max</Link></li>
               <li><Link to="/macros-calculator">Macros</Link></li>
               <li><Link to="/target-heart-rate">Target Heart Rate</Link></li>
+              <li><Link to="/program-picker">Program Picker</Link></li>
             </ul>
           </div>
         </nav>
@@ -29,6 +31,7 @@ function App(props){
         <Route path="/one-rep-max-calculator" component={OneRepMax}/>
         <Route path="/macros-calculator" component={Macros}/>
         <Route path="/target-heart-rate" component={TargetHeartRate}/>
+        <Route path="/program-picker" component={ProgramPicker}/>
         <Footer />
       </div>
     </BrowserRouter>

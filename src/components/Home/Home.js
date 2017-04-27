@@ -9,6 +9,8 @@ import tdeeImg from '../../img/tdee.jpg'
 import tdeeSvg from '../../img/tdee.svg'
 import programPickerImg from '../../img/program-picker.jpg'
 import programPickerSvg from '../../img/program-picker.svg'
+import targetHeartRateImg from '../../img/target-heart-rate.jpg'
+import targetHeartRateSvg from '../../img/target-heart-rate.svg'
 
 function Home(props) {
   return (
@@ -58,10 +60,22 @@ function Home(props) {
           </Link>
         </div>
         <div className="col-sm-6">
+          <Link to="/target-heart-rate">
+            <div className="intro-block-img" style={{backgroundImage: `url(${targetHeartRateImg})`}}>
+              <div className="intro-block mod-heart-rate">
+                <h1>Target Heart Rate</h1>
+                <img src={targetHeartRateSvg} className="intro-block-icon" alt="An icon of a heart" />
+                <h2>Find your maximum recommended heart rate and then your target heart rates, used as a guide
+                to follow for different fitness goals.</h2>
+              </div>
+            </div>
+          </Link>
+        </div>
+        <div className="col-sm-12">
           <Link to="/program-picker">
             <div className="intro-block-img" style={{backgroundImage: `url(${programPickerImg})`}}>
               <div className="intro-block mod-program-picker">
-                <h1>Program Picker</h1>
+                <h1>Program Picker (Coming soon!)</h1>
                 <img src={programPickerSvg} className="intro-block-icon" alt="An icon of a barbell" />
                 <h2>A set of questions to help you find a weightlifting program that fits your goals, with links to
                 resources on the program that it finds for you.</h2>
