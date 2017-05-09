@@ -9,6 +9,11 @@ import UnitConversion from '../../utilities/UnitConversion';
 import DisplayOutput from '../display-output/DisplayOutput';
 import CalorieCalc from '../../utilities/CalorieCalc';
 import FormValidation from '../../utilities/FormValidation'
+import Ad from '../Ad/Ad';
+import myFitnessPalImg from '../../img/MyFitnessPal_Logo.png'
+import scaleImg from '../../img/aa-scale.jpg'
+import digitalScaleImg from '../../img/aa-digital-scale.jpg'
+import fitbitImg from '../../img/aa-fitbit-charge.png'
 
 class Tdee extends Component {
   constructor(props) {
@@ -192,6 +197,52 @@ class Tdee extends Component {
             <div className="col-sm-6">
               <DisplayOutput bmr={this.state.bmr} tdee={this.state.tdee}/>
             </div>
+          </div>
+          <div className="row">
+            <div className="col-sm-12">
+              <h2>Next Steps</h2>
+              <p>If you are looking to gain or lose weight, you need to know that a pound of fat is about 3,500 calories. Most people are going to want to lose
+              or gain that weight sustainably, at a rate of about 1 lb a week. That works out to 500 calories a day (500 x 7 = 3500). So take your TDEE and subtract
+              500 from it to lose weight and add 500 to gain weight.
+              </p>
+              <p>Everyone is different, though, so it's also important that once you have your estimate TDEE to track what you are eating and your weight. If you are losing or
+              gaining or staying the same, you will want to know how much you have eaten and adjust accordingly. To help you with keeping track of what you are eating and your
+              weight, we've listed some essential tools below.</p>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-sm-12">
+              <h2>Essential tools for gaining or losing weight:</h2>
+            </div>
+          </div>
+          <div className="row">
+            <Ad link="https://www.amazon.com/Ozeri-Digital-Multifunction-Kitchen-Elegant/dp/B004164SRA//ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=createahomegy-20&linkId=ffb81d6d1131129a0c549e812596a1f5"
+              image={scaleImg} title="Kitchen Scale"
+              alt="A kitchen scale" >
+              Losing or gaining weight requires knowing how much you are eating. This <a href="https://www.amazon.com/Ozeri-Digital-Multifunction-Kitchen-Elegant/dp/B004164SRA//ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=createahomegy-20&linkId=ffb81d6d1131129a0c549e812596a1f5">bestselling digital kitchen scale</a> makes knowing that a breeze.
+            </Ad>
+            <Ad link="https://www.amazon.com/Etekcity-Digital-Bathroom-Technology-Elegant/dp/B00F3J9G1W//ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=createahomegy-20&linkId=9ea94b3f68e824dfd9f031c8bd0d00c8"
+              image={digitalScaleImg}
+              title="Digital Scale"
+              alt="A digital scale" >
+              To keep track of whether you are gaining, losing, or maintaining your weight, you need a scale! <a href="https://www.amazon.com/Etekcity-Digital-Bathroom-Technology-Elegant/dp/B00F3J9G1W//ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=createahomegy-20&linkId=9ea94b3f68e824dfd9f031c8bd0d00c8">This one</a> is highly-reviewed and accurate.
+            </Ad>
+          </div>
+          <div className="row">
+            <Ad link="//myfitnesspal.com"
+              image={myFitnessPalImg}
+              title="MyFitnessPal App"
+              alt="MyFitnessPal log" >
+              This <a href="//myfitnesspal.com">app and website</a> has a huge amount of nutrition information for foods. Once you know how much you need to eat, MyFitnessPal will help
+              you track it.
+            </Ad>
+            <Ad link="https://www.amazon.com/Fitbit-Charge-Heart-Fitness-Wristband/dp/B01K9S260E/ref=as_li_ss_tl?th=1&linkCode=ll1&tag=createahomegy-20&linkId=100ee607b4ea3abe14d81c6659db54e1"
+              image={fitbitImg}
+              title="Fitbit Charge 2 Fitness Tracker"
+              alt="Fitbit Charge 2 fitness tracker" >
+              If you want a more high-tech way to get your TDEE, invest in a fitness tracker. <a href="https://www.amazon.com/Fitbit-Charge-Heart-Fitness-Wristband/dp/B01K9S260E/ref=as_li_ss_tl?th=1&linkCode=ll1&tag=createahomegy-20&linkId=100ee607b4ea3abe14d81c6659db54e1">FitBit</a>, with its constant heart rate monitoring, provides a decent
+              estimate of your daily calories burned.
+            </Ad>
           </div>
         </div>
     );

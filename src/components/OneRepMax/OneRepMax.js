@@ -6,6 +6,9 @@ import FieldError from '../input-fields/FieldError'
 import DisplayOutput from '../display-output/DisplayOutput';
 import FormValidation from '../../utilities/FormValidation'
 import OneRepMaxCalc from '../../utilities/OneRepMaxCalc'
+import Ad from '../Ad/Ad';
+import chalkImg from '../../img/aa-gym-chalk.jpg'
+import beltImg from '../../img/aa-weight-belt.jpg'
 
 class OneRepMax extends Component {
   constructor(props) {
@@ -104,6 +107,27 @@ class OneRepMax extends Component {
             <div className="col-sm-6">
               <DisplayOutput max={this.state.max} units={this.state.units}/>
             </div>
+          </div>
+          <div className="row">
+            <div className="col-sm-12">
+              <h2>Essential tools for lifting heavy:</h2>
+            </div>
+          </div>
+          <div className="row">
+            <Ad link="https://www.amazon.com/Refillable-Chalk-Ball-Capacity-Comes/dp/B0175OQJMG/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=createahomegy-20&linkId=bab37ba934fc878a918330338e4518d8"
+              image={chalkImg}
+              title="Gym Chalk"
+              alt="Photograph of gym chalk" >
+              Trying to approach your one-rep max on lifts like the deadlift is likely impossible without <a href="https://www.amazon.com/Refillable-Chalk-Ball-Capacity-Comes/dp/B0175OQJMG/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=createahomegy-20&linkId=bab37ba934fc878a918330338e4518d8">chalk</a>. Luckily
+              it's cheap and easy to use!
+            </Ad>
+            <Ad link="https://www.amazon.com/Refillable-Chalk-Ball-Capacity-Comes/dp/B0175OQJMG/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=createahomegy-20&linkId=bab37ba934fc878a918330338e4518d8"
+              image={beltImg}
+              title="Valeo Weight Belt"
+              alt="Photograph of black weight belt" >
+              If you are moving serious weight, a belt like the <a href="https://www.amazon.com/Refillable-Chalk-Ball-Capacity-Comes/dp/B0175OQJMG/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=createahomegy-20&linkId=bab37ba934fc878a918330338e4518d8">Valeo</a> is important to keep your back safe, especially on full body compound
+              barbell lifts like the squat and deadlift.
+            </Ad>
           </div>
         </div>
     )

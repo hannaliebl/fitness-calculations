@@ -5,6 +5,10 @@
   margin-bottom: 30px;
 }
 
+.mod-tdee {
+  margin-bottom: 0px;
+}
+
 .result-block.mod-bmr {
   background: #52414C;
 }

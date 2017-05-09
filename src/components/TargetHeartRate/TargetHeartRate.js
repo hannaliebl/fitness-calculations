@@ -5,6 +5,10 @@ import DisplayOutput from '../display-output/DisplayOutput'
 import HeartRateTable from '../HeartRateTable/HeartRateTable'
 import FormValidation from '../../utilities/FormValidation'
 import MaxHeartRate from '../../utilities/MaxHeartRate'
+import Ad from '../Ad/Ad';
+import chestStrapImg from '../../img/aa-chest-strap-heartrate.jpg'
+import fitbitImg from '../../img/aa-fitbit-charge.png'
+
 
 class TargetHeartRate extends Component {
   constructor(props) {
@@ -100,6 +104,25 @@ class TargetHeartRate extends Component {
           <div className="col-sm-12">
             <HeartRateTable hrMax={this.state.hrMax} rhr={this.state.rhr} />
           </div>
+        </div>
+        <div className="row">
+          <div className="col-sm-12">
+            <h2>Essential tools for measuring your heart rate:</h2>
+          </div>
+        </div>
+        <div className="row">
+          <Ad link="https://www.amazon.com/Polar-Bluetooth-Fitness-Tracker-XX-Large/dp/B007S088F4//ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=createahomegy-20&linkId=9447a2f4b7bf92a37260a74a7bb7dfeb"
+            image={chestStrapImg}
+            title="Chest Strap Monitor"
+            alt="A chest strap heart rate monitor" >
+            Chest strap heart rate monitors are the most accurate heart rate monitors around. If you are serious about doing target heart rate training, they are the equipment to buy. <a href="https://www.amazon.com/Polar-Bluetooth-Fitness-Tracker-XX-Large/dp/B007S088F4//ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=createahomegy-20&linkId=9447a2f4b7bf92a37260a74a7bb7dfeb">Polar's H7 model</a> connects to a smart phone via Bluetooth to record its measurements.
+          </Ad>
+          <Ad link="https://www.amazon.com/Fitbit-Charge-Heart-Fitness-Wristband/dp/B01K9S260E/ref=as_li_ss_tl?th=1&linkCode=ll1&tag=createahomegy-20&linkId=100ee607b4ea3abe14d81c6659db54e1"
+            image={fitbitImg}
+            title="Fitbit Charge 2 Fitness Tracker"
+            alt="Fitbit Charge 2 fitness tracker" >
+            <a href="https://www.amazon.com/Fitbit-Charge-Heart-Fitness-Wristband/dp/B01K9S260E/ref=as_li_ss_tl?th=1&linkCode=ll1&tag=createahomegy-20&linkId=100ee607b4ea3abe14d81c6659db54e1">FitBit</a> trackers are wrist trackers that provide constant heart rate monitoring, amomg a variety of other features. They are not quite as accurate as chest monitors, but its other features may make it a better option for you.
+          </Ad>
         </div>
       </div>
     )

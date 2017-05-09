@@ -5,6 +5,9 @@ import DisplayOutput from '../display-output/DisplayOutput';
 import FormValidation from '../../utilities/FormValidation'
 import PercentsValid from '../../utilities/PercentsValid'
 import CalorieCalc from '../../utilities/CalorieCalc';
+import Ad from '../Ad/Ad';
+import scaleImg from '../../img/aa-scale.jpg'
+import wheyImg from '../../img/aa-whey.jpg'
 
 class Macros extends Component {
   constructor(props) {
@@ -67,9 +70,10 @@ class Macros extends Component {
         <h1>Macronutrient Calculator</h1>
         <p className="lead">Macronutrients are the three groups all foods are divided into: carbohydrates,
         fats, and protein. Depending on your dietary needs, your macronutrient percentages could be very different
-        while your calories stay the same. Someone on the ketogenic diet, for example, will have very high fat, moderate
-        protein, and very low carbohydrate percentages, while someone following a diet like Renaissance Periodization
-        could be eating the same amount of total calories but have low fat, high protein, and moderate carbohydrates.
+        while your calories stay the same. Someone on the <a href="https://www.amazon.com/Ketogenic-Cookbook-Nutritious-Low-Carb-High-Fat/dp/1628600780/ref=as_li_ss_tl?s=sporting-goods&ie=UTF8&qid=1494310956&sr=8-1&keywords=ketogenic&linkCode=ll1&tag=createahomegy-20&linkId=4e645b6e05d6699b64ce2b3402c46dd9">ketogenic diet</a>,
+        for example, will have very high fat, moderate protein, and very low carbohydrate percentages, while someone
+        following a diet like Renaissance Periodization could be eating the same amount of total calories but have low
+        fat, high protein, and moderate carbohydrates.
         </p>
         <p className="lead">
         There are many different philosophies on what macronutrient percentages should look like, so his calulcator
@@ -138,6 +142,25 @@ class Macros extends Component {
           <div className="col-sm-6">
             <DisplayOutput carbsGrams={this.state.carbsGrams} proteinGrams={this.state.proteinGrams} fatGrams={this.state.fatGrams}/>
           </div>
+        </div>
+        <div className="row">
+          <div className="col-sm-12">
+            <h2>Essential tools for hitting your macros:</h2>
+          </div>
+        </div>
+        <div className="row">
+          <Ad link="https://www.amazon.com/Ozeri-Digital-Multifunction-Kitchen-Elegant/dp/B004164SRA//ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=createahomegy-20&linkId=ffb81d6d1131129a0c549e812596a1f5"
+            image={scaleImg}
+            title="Kitchen Scale"
+            alt="A kitchen scale" >
+            You have to know how much you are eating to know whether or not you are meeting your macronutrient goals. This <a href="https://www.amazon.com/Ozeri-Digital-Multifunction-Kitchen-Elegant/dp/B004164SRA//ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=createahomegy-20&linkId=ffb81d6d1131129a0c549e812596a1f5">bestselling digital kitchen scale</a> makes knowing how much you are eating easy.
+          </Ad>
+          <Ad link="https://www.amazon.com/Optimum-Nutrition-Standard-Protein-Chocolate/dp/B000QSNYGI/ref=as_li_ss_tl?th=1&linkCode=ll1&tag=createahomegy-20&linkId=aaa952040d174b0d444179577b49cc67"
+            image={wheyImg}
+            title="Whey Protein"
+            alt="Photo of Optimum Nutrition whey protein powder tub" >
+            Especially if you are looking to gain muscle, protein requirements can be tough to meet. An easy way to get high-quality protein to meet your macro goals is to use whey protein. <a href="https://www.amazon.com/Optimum-Nutrition-Standard-Protein-Chocolate/dp/B000QSNYGI/ref=as_li_ss_tl?th=1&linkCode=ll1&tag=createahomegy-20&linkId=aaa952040d174b0d444179577b49cc67">Optimum Nutrition's whey</a> is always a good bet.
+          </Ad>
         </div>
       </div>
     )
